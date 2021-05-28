@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "uname": "admin",
+      "email": "admin@mail.com",
+      "password": "1234",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "uname": "user",
+      "admin": "user@mail.com",
+      "password": "1234",
+      "role": "user"
+    },
+    {
+      "uname": "dio",
+      "email": "mail@mail.com",
+      "password": "1234",
+      "role": "user",
+      "id": 3
+    },
+    {
+      "uname": "heryo",
+      "email": "heryo@jj.com",
+      "password": "helloworld",
+      "role": "user",
+      "id": 4
+    }
+  ],
+  "image": [
+    {
+      "id": 1,
+      "title": "IZ*ONE",
+      "desc": "Eyes on me, IZ*ONE is the best group i've ever seen. Please comeback!",
+      "image": "https://static.wikia.nocookie.net/iz-one/images/4/4c/One-reeler_Digital.jpg/revision/latest?cb=20201206150402"
+    },
+    {
+      "title": "Kim Minju",
+      "desc": "Kim Minju was a member from IZ*ONE. She is artist from Urbanworks Entertainment",
+      "image": "https://img-z.okeinfo.net/okz/500/library/images/2020/06/03/h8c8gsq53yne5sf4e8ri_14991.jpg",
+      "id": 2
+    },
+    {
+      "title": "Minju Kim",
+      "desc": "She is an Angel!",
+      "image": "https://img-z.okeinfo.net/okz/500/library/images/2020/06/03/h8c8gsq53yne5sf4e8ri_14991.jpg",
+      "id": 3
+    }
+  ]
+}
