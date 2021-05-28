@@ -34,7 +34,7 @@
       "id": 1,
       "title": "IZ*ONE",
       "desc": "Eyes on me, IZ*ONE is the best group i've ever seen. Please comeback!",
-      "image": "https://static.wikia.nocookie.net/iz-one/images/4/4c/One-reeler_Digital.jpg/revision/latest?cb=20201206150402"
+      "image": "https://i.pinimg.com/originals/03/bb/53/03bb53ce02e277befc8fa0353da31748.jpg"
     },
     {
       "title": "Kim Minju",
@@ -47,6 +47,24 @@
       "desc": "She is an Angel!",
       "image": "https://img-z.okeinfo.net/okz/500/library/images/2020/06/03/h8c8gsq53yne5sf4e8ri_14991.jpg",
       "id": 3
+    },
+    {
+      "title": "Yahoo",
+      "desc": "test yahoo",
+      "image": "https://s.yimg.com/ny/api/res/1.2/gaOzNV4hUPqWtN87A.gcTA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTY0MA--/https://s.yimg.com/uu/api/res/1.2/f.Jhzb4H5PnI2G6fNViZWw--~B/aD01MDA7dz03NTA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/id/viva_688/802287cabe3b27a08e3c4cdba4e7b5e6",
+      "id": 4
+    },
+    {
+      "title": "WIZ*ONE",
+      "desc": "Hello World",
+      "image": "https://i.pinimg.com/564x/ef/f1/57/eff1578c70652e81e2367cf3ddda95bb.jpg",
+      "id": 5
+    },
+    {
+      "title": "Another Minju",
+      "desc": "Minjel",
+      "image": "https://i.pinimg.com/564x/ef/f1/57/eff1578c70652e81e2367cf3ddda95bb.jpg",
+      "id": 6
     }
   ]
 }

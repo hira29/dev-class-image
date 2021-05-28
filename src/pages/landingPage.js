@@ -1,13 +1,36 @@
 import axios from 'axios';
 import React from 'react';
-import { FormGroup, Jumbotron, Input, Label, Button } from 'reactstrap';
+import { FormGroup, Jumbotron, Input, Label, Button, Card, CardImg, CardBody, CardTitle, CardText } from 'reactstrap';
 import { Link } from 'react-router-dom'
 import { API } from '../helper';
+import { connect } from 'react-redux';
 
 class LandingPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {  
+            album: []
+        }
+    }
+
+    componentDidMount() {
+        this.getDataAlbum()
+    }
+
+    getDataAlbum = () => {
+        axios.get(API + 'image')
+            .then(x => {
+                console.log(x.data)
+                this.setState({album: x.data})
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+
+    onClearData =()=>{
+        this.title.value = ""
+        this.desc.value = ""
+        this.image.value = ""
     }
 
     onSubmitClick =()=>{
@@ -16,21 +39,49 @@ class LandingPage extends React.Component {
             "desc"  : this.desc.value,
             "image" : this.image.value
         }
-
-        if(data.title == "" || data.desc == "" || data.image == "") alert (`Required!`)
-        else {
-            axios.post(API + 'image', data)
-                .then(x=>{
-                    console.log("Success")
-                    alert (`Data ${data.title} added!`)
-                    this.title.value = ""
-                    this.desc.value = ""
-                    this.image.value = ""
-                }).catch(err=>{
-                    console.log("onSubmitClick", err)
-                    alert (`Error!`)
-                })
+        
+        let {iduser} = this.props
+        if(data.title == "" || data.desc == "" || data.image == "") {
+            alert (`Required!`)
+            this.onClearData()
+            return
         }
+
+        if(!iduser) {
+            alert(`Belum Login!`)
+            this.onClearData()
+            return
+        }
+        
+        
+        axios.post(API + 'image', data)
+            .then(x=>{
+                console.log("Success")
+                alert (`Data ${data.title} added!`)
+                this.onClearData()
+                this.getDataAlbum()
+            }).catch(err=>{
+                console.log("onSubmitClick", err)
+                alert (`Error!`)
+            })
+    
+    }
+
+    showAlbum = () => {
+        return this.state.album.map( (val,index) => {
+            return(
+                <div className="col-sm-12 col-md-4 p-3">
+                    <Card>
+                        <CardImg top src={val.image} style={{objectFit: 'cover', height: '30vh'}} />
+                        <CardBody>
+                            <CardTitle tag="h5">{val.title}</CardTitle>
+                            <CardText style={{overflow:'hidden', textOverflow:'ellipsis', minHeight:'5vh', maxHeight:'5vh'}}>{val.desc}</CardText>
+                        </CardBody>
+                    </Card>
+                </div>
+            )
+        })
+        
     }
 
     render() { 
@@ -44,7 +95,7 @@ class LandingPage extends React.Component {
                     <Link to="/youralbum" className="btn btn-primary">Your Album</Link>
                     <Link to="/theiralbum" className="btn btn-outline-dark" style={{marginLeft: '10px'}}>Their Album</Link>
                 </div>
-                <div className="col-12 col-md-4">
+                <div className="col-12 col-md-4 p-2">
                     <Jumbotron style={{backgroundColor:"#333b3f", padding: "20px"}}>
                         <FormGroup>
                             <Label for="title" style={{color: "white"}}>Title</Label>
@@ -63,9 +114,18 @@ class LandingPage extends React.Component {
                         </div>
                     </Jumbotron>
                 </div>
+                <div className="row container m-auto">
+                    {this.showAlbum()}
+                </div>
             </div>
         );
     }
 }
+
+const mapToProps = ({ userReducer }) => {
+    return {
+        iduser: userReducer.id
+    }
+}
  
-export default LandingPage;
+export default connect(mapToProps) (LandingPage);
