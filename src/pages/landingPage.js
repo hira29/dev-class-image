@@ -4,6 +4,7 @@ import { FormGroup, Jumbotron, Input, Label, Button, Card, CardImg, CardBody, Ca
 import { Link } from 'react-router-dom'
 import { API } from '../helper';
 import { connect } from 'react-redux';
+import CardViewComponent from '../components/cardview'
 
 class LandingPage extends React.Component {
     constructor(props) {
@@ -70,15 +71,7 @@ class LandingPage extends React.Component {
     showAlbum = () => {
         return this.state.album.map( (val,index) => {
             return(
-                <div className="col-sm-12 col-md-4 p-3">
-                    <Card>
-                        <CardImg top src={val.image} style={{objectFit: 'cover', height: '30vh'}} />
-                        <CardBody>
-                            <CardTitle tag="h5">{val.title}</CardTitle>
-                            <CardText style={{overflow:'hidden', textOverflow:'ellipsis', minHeight:'5vh', maxHeight:'5vh'}}>{val.desc}</CardText>
-                        </CardBody>
-                    </Card>
-                </div>
+                <CardViewComponent img={val.image}  title={val.title} desc={val.desc}/>
             )
         })
         
@@ -114,6 +107,7 @@ class LandingPage extends React.Component {
                         </div>
                     </Jumbotron>
                 </div>
+                
                 <div className="row container m-auto">
                     {this.showAlbum()}
                 </div>
